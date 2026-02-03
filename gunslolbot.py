@@ -1,90 +1,113 @@
-#import requests
-#import os
-#import time
-#proxylist=[]
-#url="https://guns.lol/sh3dowkkk"
-#with open("dosya.txt", "r", encoding="utf-8") as file:
-#    for satir in file:
-#        proxylist.append(satir)
-#
-#socks5proxylist=[""]
-#for socks5proxy in proxylist:
-#    tt="socks5://"+socks5proxy
-#    socks5proxylist.append(tt)
-#print(socks5proxylist)
-#for  ff in socks5proxylist :
-#    time.sleep(0.5)
-#    os.system("cls")
-#    try:
-#        dwn=requests.get(url,proxies=socks5proxylist[2],timeout=10)
-#        print(dwn)
-#    except Exception as e:
-#        print(f"Error: {e}")
-#    time.sleep(0.5)
-def hatalı2():
-    import requests
-    import os
-    import time
-
-    url = "https://guns.lol/sh3dowkkk"
-    proxylist = []
-
-    with open("dosya.txt", "r", encoding="utf-8") as file:
-        for satir in file:
-            proxylist.append(satir.strip())
-
-    for proxy in proxylist:
-        time.sleep(0.5)
-
-        socks_proxy = f"socks5h://{proxy}"
-
-        proxies = {
-            "socks5": socks_proxy,
-            "socks5": socks_proxy
-        }
-        print(proxies)
-        print(socks_proxy)
-        print(proxy)
-        try:
-            r = requests.get(url, proxies=proxies, timeout=10,verify=False)
-            print("Status:", r.status_code)
-            break  
-        except Exception as e:
-            print("Error:", proxy,e)
-            print(e)
-import requests
+import random
 import time
-import urllib3
+from DrissionPage import ChromiumPage, ChromiumOptions
+URL = "https://guns.lol/sh3dowkkk"
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+ua_list = [
 
-url = "https://guns.lol/sh3dowkkk"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2_1) AppleWebKit/537.36 Chrome/121.0.0.0 Safari/537.36",
+
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0",
+
+    "Mozilla/5.0 (X11; Linux x86_64; Kali Linux) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64; Kali) Gecko/20100101 Firefox/121.0",
+
+    "Mozilla/5.0 (X11; Linux x86_64; Arch Linux) AppleWebKit/537.36 Chrome/121.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Linux x86_64; Arch) Gecko/20100101 Firefox/122.0",
+
+    "Mozilla/5.0 (X11; Linux x86_64; BlackArch) AppleWebKit/537.36 Chrome/119.0.0.0 Safari/537.36",
+
+    "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0",
+    "Mozilla/5.0 (X11; Linux x86_64; rv:115.0) Gecko/20100101 Firefox/115.0",
+
+    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (X11; Debian; Linux x86_64) Gecko/20100101 Firefox/122.0",
+
+    "Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 Chrome/121.0.0.0 Safari/537.36",
+]
+#şimdi la burya proxy listesini okuyup ayarladın heee unutma
 with open("dosya.txt", "r", encoding="utf-8") as f:
-    proxylist = f.read().splitlines()
+    proxy_list = f.read().splitlines()
+with open("user-agent.txt", "r", encoding="utf-8") as f:
+    ua_list  = f.read().splitlines()
+#attack döngüsü
+def attprox():
+    for proxy in proxy_list:
+        print(f"\n🧪 Testing proxy: socks5(h)://{proxy}")
+        co = ChromiumOptions()
+        # Proxy ayarı 
+        co.set_proxy(f"socks5h://{proxy}")
+        # User-Agent UNUTMAAAA yada yerine tor kullan
+        ua = random.choice(ua_list)
+        co.set_user_agent(ua)
+        # yeni biri gibi olsun ki giriş sayısı artsın ua yı niye koyduk random-agent için
+        co.set_argument("--incognito")
+        co.set_argument("--disable-blink-features=AutomationControlled")
+        co.set_argument("--no-first-run")
+        co.set_argument("--disable-infobars")
+        try:
+            page = ChromiumPage(co)
+            page.get(URL, timeout=5)
+            print("✅ Successfull!")
+            print("UA:", ua)
+            print("Proxy:", proxy)
+            time.sleep(5)  # Sayfa bot olduğumuzu anlamaması için otomatik
+            page.quit()
+        except Exception as e:
+            print("❌ Error:", e)
+            try:
+                page.quit()
+            except:
+                pass
+def wait_and_click(page, selector, timeout=15):
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            ele = page.ele(selector)
+            if ele:
+                ele.click()
+                return True
+        except:
+            pass
+        time.sleep(0.5)
+    return False
+co = ChromiumOptions()
+# Proxy ayarı 
+ # User-Agent UNUTMAAAA yada yerine tor kullan
+ua = random.choice(ua_list)
+co.set_user_agent(ua)
+# yeni biri gibi olsun ki giriş sayısı artsın ua yı niye koyduk random-agent için
+co.set_argument("--incognito")
+co.set_argument("--disable-blink-features=AutomationControlled")
+co.set_argument("--no-first-run")
+co.set_argument("--disable-infobars")
+try:
+    page = ChromiumPage(co)
 
-for proxy in proxylist:
-    socks_proxy = f"socks5h://{proxy}"
-    proxies = {
-        "http": socks_proxy,
-        "https": socks_proxy
-    }
+    page.get(URL, timeout=10)
+    print("✅ Successfull!")
+    print("UA:", ua)
 
-    print("socks proxy testing:", socks_proxy)
+    ok = wait_and_click(page, 'text:contains(click to enter)', timeout=15)
+    if ok:
+        print("✅ click to enter was founded")
+    else:
+        print("❌ click to enter not found")
 
-    try:
-        r = requests.get(
-            url,
-            proxies=proxies,
-            timeout=30,
-            verify=False
-        )
-        print("✅ success | Status:", r.status_code)
-        break
-    except Exception as e:
-        print("❌ error:", e)
-
-
-
-
-
+    time.sleep(5)
+    page.quit()
+except Exception as e:
+        print("❌ Error:", e)
+        try:
+            page.quit()
+        except:
+            pass
