@@ -26,15 +26,13 @@ def main():
     listbos.append(ua_file)
     listbos.append(threading_flag)
     listbos.append(proxy)
-main()
-if proxy==None:
-    proxy=0
-d="URL        :", url
-c="TIME       :", delayTİME
-b="THREADING  :", threading_flag
-a="UA COUNT   :", len(ua_file)
-f="PROXY :",proxy
 
+    d="URL        :", url
+    c="TIME       :", delayTİME
+    b="THREADING  :", threading_flag
+    a="UA COUNT   :", len(ua_file)
+    f="PROXY :",proxy
+main()
 
 print(f"""
      ===========================#@@@@@@@@#    
