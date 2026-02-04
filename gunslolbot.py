@@ -91,7 +91,7 @@ def notthear():
         co.set_argument("--disable-blink-features=AutomationControlled")
         co.set_argument("--incognito")
         co.set_argument("--no-first-run")
-
+        args.proxy and co.set_proxy(args.proxy)
         try:
             page = ChromiumPage(co)
             print(f"🕵️ AGENT: {au_list[:50]}...")
@@ -132,4 +132,5 @@ elif threading_flag==1:
 else:
     print("ERROR")
 print("\n✨ OKEY TO LİST!")
+
 
