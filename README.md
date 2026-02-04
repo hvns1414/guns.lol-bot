@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" width="200" height="165" alt="The gunslolPY">
+  <img src="logo2.png" width="200" height="165" alt="The gunslolPY">
 </p>
 
 <h1 align="center"> The-GUNSLOLPY</h1>
