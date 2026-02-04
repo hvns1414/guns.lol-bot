@@ -11,6 +11,7 @@ def main():
     parser.add_argument("-u", "--url", required=True)
     parser.add_argument("--time", type=int, required=True)
     parser.add_argument("--ua", default="user-agent.txt")
+    parser.add_argument("--proxy",default=None,help="Proxy (ip:port or socks5://ip:port). Optional")
     parser.add_argument("--threading", action="store_true",default=0)
 
     args = parser.parse_args()
@@ -19,14 +20,16 @@ def main():
     delayTİME = args.time
     ua_file = args.ua
     threading_flag = 1 if args.threading else 0
-
-    print(url, delay, ua_file, threading_flag)
+    proxy = args.proxy    
+    print(url, delay, ua_file, threading_flag,proxy)
 main()
+if proxy==None:
+    proxy=0
 d="URL        :", url
 c="TIME       :", delayTİME
 b="THREADING  :", threading_flag
 a="UA COUNT   :", len(ua_file)
-
+f="PROXY :",proxy
 
 
 print(f"""
@@ -69,7 +72,7 @@ print(f"""
 {b}
 {c}
 {d}
-                       
+{f}                     
                                                  """)
 URL = url
 try:
@@ -129,3 +132,4 @@ elif threading_flag==1:
 else:
     print("ERROR")
 print("\n✨ OKEY TO LİST!")
+
