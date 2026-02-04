@@ -15,13 +15,17 @@ def main():
     parser.add_argument("--threading", action="store_true",default=0)
 
     args = parser.parse_args()
-
+    listbos=[]
     url = args.url
     delayTİME = args.time
     ua_file = args.ua
     threading_flag = 1 if args.threading else 0
     proxy = args.proxy    
-    print(url, delay, ua_file, threading_flag,proxy)
+    listbos.append(url)
+    listbos.append(delayTİME)
+    listbos.append(ua_file)
+    listbos.append(threading_flag)
+    listbos.append(proxy)
 main()
 if proxy==None:
     proxy=0
@@ -132,5 +136,4 @@ elif threading_flag==1:
 else:
     print("ERROR")
 print("\n✨ OKEY TO LİST!")
-
 
