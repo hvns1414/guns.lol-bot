@@ -31,13 +31,33 @@ https://gist.github.com/pzb/b4b6f57144aea7827ae4
 
 - **SOCKS5**
 
-```bash
+
 https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt
 ```
 - **CODE(BOT)**
 ```bash
 https://github.com/hvns1414/guns.lol-bot
 ```
-'''bash
+```bash
 pip install DrissionPage pysocks
-'''
+pip install argparse
+```
+-**LİNUX/GNU** 
+To run the start.sh file in Linux
+```bash
+sudo apt install tor
+```
+chmod +x start.sh
+## USİNG
+Recommended operating method
+```bash
+python gunslolbot.py -u your guns.lol or ammo.lol link --time 5
+```
+big bot method
+```bash
+python gunslolbot.py -u your guns.lol or ammo.lol link --time 5 --ua Here, enter the path of the file you downloaded (the fake user agent you downloaded) into the -ua field. 
+```
+Extreme anonymous attack
+```bash
+bash start.sh
+```
